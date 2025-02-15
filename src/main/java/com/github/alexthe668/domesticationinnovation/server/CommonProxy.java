@@ -711,8 +711,10 @@ public class CommonProxy {
 
     @SubscribeEvent
     public void onLivingDamage(LivingDamageEvent event) {
-        if(TameableUtils.isTamed(event.getEntity()) && event.getSource().getDirectEntity() instanceof Player player && TameableUtils.isPetOf(player, event.getEntity()) && !player.isShiftKeyDown()){
-            event.setCanceled(true);
+        if (!DomesticationMod.CONFIG.enableFriendlyFire.get()) {
+            if (TameableUtils.isTamed(event.getEntity()) && event.getSource().getDirectEntity() instanceof Player player && TameableUtils.isPetOf(player, event.getEntity()) && !player.isShiftKeyDown()) {
+                event.setCanceled(true);
+            }
         }
         if (event.getSource().getEntity() instanceof LivingEntity && TameableUtils.isTamed(event.getSource().getEntity())) {
             LivingEntity pet = (LivingEntity) event.getSource().getEntity();

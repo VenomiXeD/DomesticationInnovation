@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DIConfig {
+    public final ForgeConfigSpec.BooleanValue enableFriendlyFire;
 
     public final ForgeConfigSpec.BooleanValue trinaryCommandSystem;
     public final ForgeConfigSpec.BooleanValue tameableAxolotl;
@@ -39,6 +40,7 @@ public class DIConfig {
 
     public DIConfig(final ForgeConfigSpec.Builder builder) {
         builder.push("general");
+        enableFriendlyFire = builder.comment("true if domestic innovations allies checking will be used, false to disable this entirely").translation("enable_friendly_fire").define("enable_friendly_fire", true);
         trinaryCommandSystem = builder.comment("true if wolves, cats, parrots, foxes, axolotls, etc can be set to wander, sit or follow").translation("trinary_command_system").define("trinary_command_system", true);
         tameableAxolotl = builder.comment("true if axolotls are fully tameable (axolotl must be tamed with tropical fish)").translation("tameable_axolotls").define("tameable_axolotls", true);
         tameableHorse = builder.comment("true if horses, donkeys, llamas, etc can be given enchants, beds, etc").translation("tameable_horse").define("tameable_horse", true);
